@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Звёзды и Математика: Основы</title>
+    <style>
+        :root {
+            --space: #0a0f2b;
+            --star-yellow: #FFE81F;
+            --neon-blue: #00f3ff;
+        }
+
+        body {
+            background: var(--space);
+            color: white;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+        }
+
+        h1 {
+            color: var(--star-yellow);
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px var(--star-yellow);
+        }
+
+        .section {
+            margin: 40px 0;
+            padding: 20px;
+            border-left: 3px solid var(--neon-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        h2 {
+            color: var(--neon-blue);
+            margin-top: 0;
+        }
+
+        .formula {
+            color: var(--neon-blue);
+            font-size: 1.3em;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        .example {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .star-pattern {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.3;
+            background-image: 
+                radial-gradient(circle at 10% 20%, white 0.5px, transparent 1px),
+                radial-gradient(circle at 90% 80%, white 0.5px, transparent 1px);
+            background-size: 300px 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="star-pattern"></div>
+    
+    <div class="container">
+        <h1>Основы Космической Математики</h1>
+
+        <!-- Раздел 1: Расстояния -->
+        <div class="section">
+            <h2>1. Измерение космических расстояний</h2>
+            <div class="formula">
+                1 световой год = 9 460 730 472 580 800 метров ≈ 9.46 × 10<sup>15</sup> м
+            </div>
+            <p>Световой год - расстояние, которое свет проходит за один земной год. Используется для измерения:</p>
+            <ul>
+                <li>Расстояний между звёздами</li>
+                <li>Размеров галактик</li>
+                <li>Космических структур</li>
+            </ul>
+            
+            <div class="example">
+                <h3>Пример расчёта:</h3>
+                <p>Если ближайшая к нам звезда Проксима Центавра находится в 4.24 световых годах:</p>
+                <p>Расстояние в километрах = 4.24 × 9.46 × 10<sup>12</sup> км ≈ 4 × 10<sup>13</sup> км</p>
+            </div>
+        </div>
+
+        <!-- Раздел 2: Гравитация -->
+        <div class="section">
+            <h2>2. Закон Всемирного Тяготения</h2>
+            <div class="formula">
+                F = G × (m₁ × m₂) / r²
+            </div>
+            <p>Где:</p>
+            <ul>
+                <li>F - сила притяжения (Н)</li>
+                <li>G = 6.674×10<sup>-11</sup> Н·м²/кг² (гравитационная постоянная)</li>
+                <li>m₁, m₂ - массы тел (кг)</li>
+                <li>r - расстояние между центрами тел (м)</li>
+            </ul>
+
+            <div class="example">
+                <h3>Пример применения:</h3>
+                <p>Рассчитаем силу притяжения между Землёй и Луной:</p>
+                <p>m₁ (Земля) = 5.97×10<sup>24</sup> кг</p>
+                <p>m₂ (Луна) = 7.35×10<sup>22</sup> кг</p>
+                <p>r = 384 400 000 м</p>
+                <p>F = 6.674×10<sup>-11</sup> × (5.97×10<sup>24</sup> × 7.35×10<sup>22</sup>) / (3.844×10<sup>8</sup>)² ≈ 1.98×10<sup>20</sup> Н</p>
+            </div>
+        </div>
+
+        <!-- Раздел 3: Орбиты -->
+        <div class="section">
+            <h2>3. Математика орбит</h2>
+            <div class="formula">
+                T² = (4π²/G(M+m)) × a³
+            </div>
+            <p>Третий закон Кеплера:</p>
+            <ul>
+                <li>T - период обращения (секунды)</li>
+                <li>a - большая полуось орбиты (метры)</li>
+                <li>M и m - массы тел (кг)</li>
+            </ul>
+
+            <div class="example">
+                <h3>Пример для спутника Земли:</h3>
+                <p>Геостационарная орбита (T = 24 часа = 86400 с)</p>
+                <p>M (Земля) = 5.97×10<sup>24</sup> кг</p>
+                <p>a = ∛(T² × G × M / 4π²) ≈ 42 164 км от центра Земли</p>
+            </div>
+        </div>
+
+        <!-- Новый раздел: Температура звезд -->
+        <div class="section">
+            <h2>4. Закон Стефана-Больцмана</h2>
+            <div class="formula">
+                L = 4πR²σT⁴
+            </div>
+            <p>Где:</p>
+            <ul>
+                <li>L - светимость звезды (Вт)</li>
+                <li>R - радиус звезды (м)</li>
+                <li>T - температура поверхности (К)</li>
+                <li>σ = 5.67×10<sup>-8</sup> Вт/(м²·К⁴) (постоянная Стефана-Больцмана)</li>
+            </ul>
+
+            <div class="example">
+                <h3>Пример для Солнца:</h3>
+                <p>R = 6.96×10<sup>8</sup> м</p>
+                <p>T = 5778 K</p>
+                <p>L = 4π × (6.96×10<sup>8</sup>)² × 5.67×10<sup>-8</sup> × (5778)⁴ ≈ 3.8×10<sup>26</sup> Вт</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
