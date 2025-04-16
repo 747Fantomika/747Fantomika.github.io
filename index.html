@@ -2,175 +2,244 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Звёзды и Математика: Основы</title>
+    <title>Космическая Математика</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        :root {
-            --space: #0a0f2b;
-            --star-yellow: #FFE81F;
-            --neon-blue: #00f3ff;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
 
         body {
-            background: var(--space);
-            color: white;
-            font-family: Arial, sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            padding: 20px;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
-        }
-
-        h1 {
-            color: var(--star-yellow);
-            text-align: center;
-            font-size: 2.8em;
-            margin-bottom: 30px;
-            text-shadow: 0 0 15px var(--star-yellow);
-        }
-
-        .section {
-            margin: 40px 0;
-            padding: 20px;
-            border-left: 3px solid var(--neon-blue);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        h2 {
-            color: var(--neon-blue);
-            margin-top: 0;
-        }
-
-        .formula {
-            color: var(--neon-blue);
-            font-size: 1.3em;
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-        }
-
-        .example {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 5px;
-        }
-
-        .star-pattern {
+        #starCanvas {
             position: fixed;
-            width: 100vw;
-            height: 100vh;
             top: 0;
             left: 0;
             z-index: -1;
-            opacity: 0.3;
-            background-image: 
-                radial-gradient(circle at 10% 20%, white 0.5px, transparent 1px),
-                radial-gradient(circle at 90% 80%, white 0.5px, transparent 1px);
-            background-size: 300px 300px;
+        }
+
+        section {
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 1s;
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 15px;
+            border: 2px solid #4fa4ff;
+            box-shadow: 0 0 30px rgba(79, 164, 255, 0.4);
+        }
+
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1, h2 {
+            color: #4fa4ff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 2.2em;
+        }
+
+        p {
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            font-size: 1.1em;
+        }
+
+        .formula {
+            background: #001225;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .calculator {
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        input, button {
+            padding: 0.8rem;
+            margin: 0.5rem;
+            background: #001225;
+            border: 1px solid #4fa4ff;
+            color: white;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button:hover {
+            background: #4fa4ff;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="star-pattern"></div>
-    
-    <div class="container">
-        <h1>Основы Космической Математики</h1>
+    <canvas id="starCanvas"></canvas>
 
-        <!-- Раздел 1: Расстояния -->
-        <div class="section">
-            <h2>1. Измерение космических расстояний</h2>
-            <div class="formula">
-                1 световой год = 9 460 730 472 580 800 метров ≈ 9.46 × 10<sup>15</sup> м
-            </div>
-            <p>Световой год - расстояние, которое свет проходит за один земной год. Используется для измерения:</p>
-            <ul>
-                <li>Расстояний между звёздами</li>
-                <li>Размеров галактик</li>
-                <li>Космических структур</li>
-            </ul>
+    <section id="intro">
+        <h1>Математика Космоса</h1>
+        <p>Исследуйте фундаментальные законы Вселенной через призму математики</p>
+    </section>
+
+    <section id="distance-measurement">
+        <h2>Измерение космических расстояний</h2>
+        <div class="formula">
+            \( d = \frac{1}{p} \) (параллакс, парсеки)<br>
+            \( m - M = 5\log_{10}(d) - 5 \) (модуль расстояния)<br>
+            \( z = \frac{\Delta\lambda}{\lambda_0} \) (красное смещение)
+        </div>
+        <p>Метод параллакса работает для ближайших звёзд (до 1000 св. лет). Для больших расстояний используют цефеиды и сверхновые типа Ia.</p>
+    </section>
+
+    <section id="kepler">
+        <h2>Законы Кеплера</h2>
+        <div class="formula">
+            1. \( \frac{T^2}{a^3} = \frac{4\pi^2}{G(M+m)} \)<br>
+            2. \( \frac{dA}{dt} = \text{const} \)<br>
+            3. \( T^2 \propto a^3 \)
+        </div>
+        <p>Основы небесной механики, описывающие движение планет вокруг Солнца.</p>
+    </section>
+
+    <section id="gravity">
+        <h2>Закон Всемирного Тяготения</h2>
+        <div class="formula">
+            \( F = G\frac{m_1m_2}{r^2} \)<br>
+            \( G = 6.67430(15) \times 10^{-11} \text{ м}^3\text{кг}^{-1}\text{с}^{-2} \)
+        </div>
+        <p>Фундаментальный закон классической механики, описывающий гравитационное взаимодействие.</p>
+    </section>
+
+    <section id="stefan-boltzmann">
+        <h2>Закон Стефана-Больцмана</h2>
+        <div class="formula">
+            \( L = 4\pi R^2 \sigma T^4 \)<br>
+            \( \sigma = 5.670374419 \times 10^{-8} \text{ Вт·м}^{-2}\text{К}^{-4} \)
+        </div>
+        <p>Закон связывает светимость звезды с её температурой и радиусом.</p>
+    </section>
+
+    <section class="calculator">
+        <h2>Калькулятор расстояний</h2>
+        <input type="text" id="planetInput" placeholder="Введите название планеты">
+        <button onclick="calculateDistance()">Рассчитать</button>
+        <div id="result"></div>
+    </section>
+
+    <script>
+        // Звездное небо
+        const canvas = document.getElementById('starCanvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function initStars() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
             
-            <div class="example">
-                <h3>Пример расчёта:</h3>
-                <p>Если ближайшая к нам звезда Проксима Центавра находится в 4.24 световых годах:</p>
-                <p>Расстояние в километрах = 4.24 × 9.46 × 10<sup>12</sup> км ≈ 4 × 10<sup>13</sup> км</p>
-            </div>
-        </div>
+            for(let i = 0; i < 400; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5,
+                    alpha: Math.random() * 0.5 + 0.5,
+                    speed: Math.random() * 0.05
+                });
+            }
+        }
 
-        <!-- Раздел 2: Гравитация -->
-        <div class="section">
-            <h2>2. Закон Всемирного Тяготения</h2>
-            <div class="formula">
-                F = G × (m₁ × m₂) / r²
-            </div>
-            <p>Где:</p>
-            <ul>
-                <li>F - сила притяжения (Н)</li>
-                <li>G = 6.674×10<sup>-11</sup> Н·м²/кг² (гравитационная постоянная)</li>
-                <li>m₁, m₂ - массы тел (кг)</li>
-                <li>r - расстояние между центрами тел (м)</li>
-            </ul>
+        function animateStars() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            stars.forEach(star => {
+                star.y += star.speed;
+                if(star.y > canvas.height) star.y = 0;
+                
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+                ctx.fill();
+            });
+            
+            requestAnimationFrame(animateStars);
+        }
 
-            <div class="example">
-                <h3>Пример применения:</h3>
-                <p>Рассчитаем силу притяжения между Землёй и Луной:</p>
-                <p>m₁ (Земля) = 5.97×10<sup>24</sup> кг</p>
-                <p>m₂ (Луна) = 7.35×10<sup>22</sup> кг</p>
-                <p>r = 384 400 000 м</p>
-                <p>F = 6.674×10<sup>-11</sup> × (5.97×10<sup>24</sup> × 7.35×10<sup>22</sup>) / (3.844×10<sup>8</sup>)² ≈ 1.98×10<sup>20</sup> Н</p>
-            </div>
-        </div>
+        // Обновленные данные для калькулятора
+        const planetData = {
+            'меркурий': { lightSeconds: 480, km: 77.3e6 },
+            'венера': { lightSeconds: 900, km: 261e6 },
+            'марс': { lightSeconds: 1260, km: 225e6 },
+            'юпитер': { lightMinutes: 35, km: 628e6 },
+            'сатурн': { lightMinutes: 70, km: 1.28e9 },
+            'уран': { lightMinutes: 160, km: 2.72e9 },
+            'нептун': { lightMinutes: 250, km: 4.35e9 }
+        };
 
-        <!-- Раздел 3: Орбиты -->
-        <div class="section">
-            <h2>3. Математика орбит</h2>
-            <div class="formula">
-                T² = (4π²/G(M+m)) × a³
-            </div>
-            <p>Третий закон Кеплера:</p>
-            <ul>
-                <li>T - период обращения (секунды)</li>
-                <li>a - большая полуось орбиты (метры)</li>
-                <li>M и m - массы тел (кг)</li>
-            </ul>
+        function calculateDistance() {
+            const input = document.getElementById('planetInput').value.toLowerCase();
+            const resultDiv = document.getElementById('result');
+            
+            if(planetData[input]) {
+                const data = planetData[input];
+                let lightStr = '';
+                let kmStr = data.km.toLocaleString('ru-RU') + ' км';
 
-            <div class="example">
-                <h3>Пример для спутника Земли:</h3>
-                <p>Геостационарная орбита (T = 24 часа = 86400 с)</p>
-                <p>M (Земля) = 5.97×10<sup>24</sup> кг</p>
-                <p>a = ∛(T² × G × M / 4π²) ≈ 42 164 км от центра Земли</p>
-            </div>
-        </div>
+                if(data.lightSeconds) {
+                    const minutes = Math.floor(data.lightSeconds / 60);
+                    const seconds = data.lightSeconds % 60;
+                    lightStr = `${minutes} мин ${seconds} сек`;
+                } else {
+                    lightStr = `${data.lightMinutes} свет. минут`;
+                }
 
-        <!-- Новый раздел: Температура звезд -->
-        <div class="section">
-            <h2>4. Закон Стефана-Больцмана</h2>
-            <div class="formula">
-                L = 4πR²σT⁴
-            </div>
-            <p>Где:</p>
-            <ul>
-                <li>L - светимость звезды (Вт)</li>
-                <li>R - радиус звезды (м)</li>
-                <li>T - температура поверхности (К)</li>
-                <li>σ = 5.67×10<sup>-8</sup> Вт/(м²·К⁴) (постоянная Стефана-Больцмана)</li>
-            </ul>
+                resultDiv.innerHTML = `
+                    Расстояние до ${input.charAt(0).toUpperCase() + input.slice(1)}:<br>
+                    <span style="color: #4fa4ff; font-size: 1.2em;">
+                    ${lightStr} (свет)</span><br>
+                    ${kmStr}
+                `;
+            } else {
+                resultDiv.innerHTML = '<span style="color: #ff4f4f;">Планета не найдена!<br>Доступные: '
+                    + Object.keys(planetData).join(', ') + '</span>';
+            }
+        }
 
-            <div class="example">
-                <h3>Пример для Солнца:</h3>
-                <p>R = 6.96×10<sup>8</sup> м</p>
-                <p>T = 5778 K</p>
-                <p>L = 4π × (6.96×10<sup>8</sup>)² × 5.67×10<sup>-8</sup> × (5778)⁴ ≈ 3.8×10<sup>26</sup> Вт</p>
-            </div>
-        </div>
-    </div>
+        // Активация секций
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('section').forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if(rect.top < window.innerHeight * 0.8) {
+                    section.classList.add('active');
+                }
+            });
+        });
+
+        // Запуск
+        initStars();
+        animateStars();
+        window.addEventListener('resize', initStars);
+    </script>
 </body>
 </html>
