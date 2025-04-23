@@ -65,33 +65,42 @@
             font-family: 'Courier New', monospace;
         }
 
-        .calculator {
-            padding: 2rem;
+        /* Стили для энциклопедии */
+        .encyclopedia {
+            max-width: 800px;
             margin: 2rem auto;
-            max-width: 600px;
         }
 
-        input, button {
-            padding: 0.8rem;
-            margin: 0.5rem;
-            background: #001225;
-            border: 1px solid #4fa4ff;
-            color: white;
-            border-radius: 5px;
+        #objectSelector {
             width: 100%;
-            max-width: 300px;
-        }
-
-        button:hover {
-            background: #4fa4ff;
-            cursor: pointer;
-        }
-
-        #result {
-            margin-top: 1rem;
             padding: 1rem;
-            border-radius: 5px;
-            text-align: center;
+            margin: 1rem 0;
+            background: #001225;
+            border: 2px solid #4fa4ff;
+            color: white;
+            font-size: 1.1em;
+            border-radius: 8px;
+        }
+
+        .result-box {
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            background: #001225;
+            border-radius: 10px;
+            border: 1px solid #4fa4ff;
+        }
+
+        .data-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(79, 164, 255, 0.1);
+            border-radius: 6px;
+        }
+
+        .highlight {
+            color: #4fa4ff;
+            font-weight: bold;
+            margin-right: 0.5rem;
         }
     </style>
 </head>
@@ -103,6 +112,7 @@
         <p>Исследуйте фундаментальные законы Вселенной через призму математики</p>
     </section>
 
+    <!-- Оригинальные разделы остаются без изменений -->
     <section id="distance-measurement">
         <h2>Измерение космических расстояний</h2>
         <div class="formula">
@@ -141,15 +151,54 @@
         <p>Закон связывает светимость звезды с её температурой и радиусом.</p>
     </section>
 
-    <section class="calculator">
-        <h2>Калькулятор расстояний</h2>
-        <input type="text" id="planetInput" placeholder="Введите название планеты">
-        <button onclick="calculateDistance()">Рассчитать</button>
-        <div id="result"></div>
+    <!-- Новая секция энциклопедии -->
+    <section class="encyclopedia">
+        <h2>Космическая Энциклопедия</h2>
+        <select id="objectSelector">
+            <option value="">Выберите объект</option>
+            <optgroup label="Солнце">
+                <option value="sun">Солнце</option>
+            </optgroup>
+            <optgroup label="Планеты">
+                <option value="mercury">Меркурий</option>
+                <option value="venus">Венера</option>
+                <option value="earth">Земля</option>
+                <option value="mars">Марс</option>
+                <option value="jupiter">Юпитер</option>
+                <option value="saturn">Сатурн</option>
+                <option value="uranus">Уран</option>
+                <option value="neptune">Нептун</option>
+            </optgroup>
+            <optgroup label="Спутники">
+                <option value="moon">Луна (Земля)</option>
+                <option value="europa">Европа (Юпитер)</option>
+                <option value="ganymede">Ганимед (Юпитер)</option>
+                <option value="titan">Титан (Сатурн)</option>
+            </optgroup>
+        </select>
+
+        <div class="result-box">
+            <div class="data-item">
+                <span class="highlight">Расстояние от Солнца:</span>
+                <span id="distanceValue">—</span>
+            </div>
+            <div class="data-item">
+                <span class="highlight">Диаметр:</span>
+                <span id="diameter">—</span>
+            </div>
+            <div class="data-item">
+                <span class="highlight">Масса:</span>
+                <span id="mass">—</span>
+            </div>
+            <div class="data-item">
+                <span class="highlight">Описание:</span>
+                <div id="objectDescription">Выберите объект для отображения информации</div>
+            </div>
+        </div>
     </section>
 
     <script>
-        // Звездное небо
+        // Звездное небо (остается без изменений)
         const canvas = document.getElementById('starCanvas');
         const ctx = canvas.getContext('2d');
         let stars = [];
@@ -186,45 +235,106 @@
             requestAnimationFrame(animateStars);
         }
 
-        // Обновленные данные для калькулятора
-        const planetData = {
-            'меркурий': { lightSeconds: 480, km: 77.3e6 },
-            'венера': { lightSeconds: 900, km: 261e6 },
-            'марс': { lightSeconds: 1260, km: 225e6 },
-            'юпитер': { lightMinutes: 35, km: 628e6 },
-            'сатурн': { lightMinutes: 70, km: 1.28e9 },
-            'уран': { lightMinutes: 160, km: 2.72e9 },
-            'нептун': { lightMinutes: 250, km: 4.35e9 }
+        // Данные для энциклопедии
+        const spaceObjects = {
+            sun: {
+                distance: "0 км (центр системы)",
+                diameter: "1 392 700 км",
+                mass: "1.989 × 10³⁰ кг",
+                description: "Жёлтый карлик, содержит 99.86% массы Солнечной системы. Температура ядра: 15 млн °C"
+            },
+            mercury: {
+                distance: "57.9 млн км",
+                diameter: "4 880 км",
+                mass: "3.3 × 10²³ кг",
+                description: "Самая близкая к Солнцу планета. Нет спутников. Суточные перепады температур до 600°C"
+            },
+            venus: {
+                distance: "108 млн км",
+                diameter: "12 104 км",
+                mass: "4.87 × 10²⁴ кг",
+                description: "Атмосфера из CO₂ с кислотными облаками. Температура поверхности: 462°C"
+            },
+            earth: {
+                distance: "149.6 млн км",
+                diameter: "12 742 км",
+                mass: "5.97 × 10²⁴ кг",
+                description: "Единственная известная планета с жизнью. 71% поверхности покрыт водой"
+            },
+            mars: {
+                distance: "227.9 млн км",
+                diameter: "6 779 км",
+                mass: "6.42 × 10²³ кг",
+                description: "Красная планета с самой высокой горой Солнечной системы (Олимп, 21 км)"
+            },
+            jupiter: {
+                distance: "778 млн км",
+                diameter: "139 820 км",
+                mass: "1.9 × 10²⁷ кг",
+                description: "Газовый гигант с Большим красным пятном - гигантским штормом размером с Землю"
+            },
+            saturn: {
+                distance: "1.43 млрд км",
+                diameter: "116 460 км",
+                mass: "5.68 × 10²⁶ кг",
+                description: "Известен своими кольцами из льда и камней. Имеет 83 подтверждённых спутника"
+            },
+            uranus: {
+                distance: "2.87 млрд км",
+                diameter: "50 724 км",
+                mass: "8.68 × 10²⁵ кг",
+                description: "Ледяной гигант с осью вращения, наклонённой на 98°. Имеет 13 колец"
+            },
+            neptune: {
+                distance: "4.5 млрд км",
+                diameter: "49 244 км",
+                mass: "1.02 × 10²⁶ кг",
+                description: "Самый ветреный мир с скоростью ветров до 2100 км/ч. Имеет 14 спутников"
+            },
+            moon: {
+                distance: "384 400 км от Земли",
+                diameter: "3 474 км",
+                mass: "7.35 × 10²² кг",
+                description: "Единственный естественный спутник Земли. Возраст: ~4.5 млрд лет"
+            },
+            europa: {
+                distance: "671 100 км от Юпитера",
+                diameter: "3 122 км",
+                mass: "4.8 × 10²² кг",
+                description: "Под ледяной коркой可能存在 океан жидкой воды. Основной кандидат на поиск жизни"
+            },
+            ganymede: {
+                distance: "1.07 млн км от Юпитера",
+                diameter: "5 268 км",
+                mass: "1.48 × 10²³ кг",
+                description: "Крупнейший спутник в системе. Имеет собственное магнитное поле"
+            },
+            titan: {
+                distance: "1.2 млн км от Сатурна",
+                diameter: "5 151 км",
+                mass: "1.35 × 10²³ кг",
+                description: "Единственный спутник с плотной атмосферой. Имеет жидкие метановые озёра"
+            }
         };
 
-        function calculateDistance() {
-            const input = document.getElementById('planetInput').value.toLowerCase();
-            const resultDiv = document.getElementById('result');
+        // Обработчик выбора объекта
+        document.getElementById('objectSelector').addEventListener('change', function() {
+            const selected = this.value;
+            const container = document.querySelector('.result-box');
             
-            if(planetData[input]) {
-                const data = planetData[input];
-                let lightStr = '';
-                let kmStr = data.km.toLocaleString('ru-RU') + ' км';
-
-                if(data.lightSeconds) {
-                    const minutes = Math.floor(data.lightSeconds / 60);
-                    const seconds = data.lightSeconds % 60;
-                    lightStr = `${minutes} мин ${seconds} сек`;
-                } else {
-                    lightStr = `${data.lightMinutes} свет. минут`;
-                }
-
-                resultDiv.innerHTML = `
-                    Расстояние до ${input.charAt(0).toUpperCase() + input.slice(1)}:<br>
-                    <span style="color: #4fa4ff; font-size: 1.2em;">
-                    ${lightStr} (свет)</span><br>
-                    ${kmStr}
-                `;
+            if(selected && spaceObjects[selected]) {
+                document.getElementById('distanceValue').textContent = spaceObjects[selected].distance;
+                document.getElementById('diameter').textContent = spaceObjects[selected].diameter;
+                document.getElementById('mass').textContent = spaceObjects[selected].mass;
+                document.getElementById('objectDescription').textContent = spaceObjects[selected].description;
+                container.style.display = 'block';
             } else {
-                resultDiv.innerHTML = '<span style="color: #ff4f4f;">Планета не найдена!<br>Доступные: '
-                    + Object.keys(planetData).join(', ') + '</span>';
+                document.getElementById('distanceValue').textContent = '—';
+                document.getElementById('diameter').textContent = '—';
+                document.getElementById('mass').textContent = '—';
+                document.getElementById('objectDescription').textContent = 'Выберите объект для отображения информации';
             }
-        }
+        });
 
         // Активация секций
         window.addEventListener('scroll', () => {
