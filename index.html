@@ -65,7 +65,18 @@
             font-family: 'Courier New', monospace;
         }
 
-        /* Стили для энциклопедии */
+        a {
+            color: #4fa4ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff6b6b;
+            text-decoration: underline;
+        }
+
+        /* Стили для справочника */
         .encyclopedia {
             max-width: 800px;
             margin: 2rem auto;
@@ -80,6 +91,7 @@
             color: white;
             font-size: 1.1em;
             border-radius: 8px;
+            cursor: pointer;
         }
 
         .result-box {
@@ -112,50 +124,48 @@
         <p>Исследуйте фундаментальные законы Вселенной через призму математики</p>
     </section>
 
-    <!-- Оригинальные разделы остаются без изменений -->
     <section id="distance-measurement">
         <h2>Измерение космических расстояний</h2>
         <div class="formula">
-            \( d = \frac{1}{p} \) (параллакс, парсеки)<br>
-            \( m - M = 5\log_{10}(d) - 5 \) (модуль расстояния)<br>
-            \( z = \frac{\Delta\lambda}{\lambda_0} \) (красное смещение)
+            \( d = \frac{1}{p} \) (<a href="https://ru.wikipedia.org/wiki/Параллакс" target="_blank">параллакс</a>, <a href="https://ru.wikipedia.org/wiki/Парсек" target="_blank">парсеки</a>)<br>
+            \( m - M = 5\log_{10}(d) - 5 \) (<a href="https://ru.wikipedia.org/wiki/Модуль_расстояния" target="_blank">модуль расстояния</a>)<br>
+            \( z = \frac{\Delta\lambda}{\lambda_0} \) (<a href="https://ru.wikipedia.org/wiki/Красное_смещение" target="_blank">красное смещение</a>)
         </div>
-        <p>Метод параллакса работает для ближайших звёзд (до 1000 св. лет). Для больших расстояний используют цефеиды и сверхновые типа Ia.</p>
+        <p>Метод <a href="https://ru.wikipedia.org/wiki/Параллакс" target="_blank">параллакса</a> работает для ближайших звёзд (до 1000 св. лет). Для больших расстояний используют <a href="https://ru.wikipedia.org/wiki/Цефеиды" target="_blank">цефеиды</a> и <a href="https://ru.wikipedia.org/wiki/Сверхновая_звезда#Тип_Ia" target="_blank">сверхновые типа Ia</a>.</p>
     </section>
 
     <section id="kepler">
         <h2>Законы Кеплера</h2>
         <div class="formula">
             1. \( \frac{T^2}{a^3} = \frac{4\pi^2}{G(M+m)} \)<br>
-            2. \( \frac{dA}{dt} = \text{const} \)<br>
-            3. \( T^2 \propto a^3 \)
+            2. \( \frac{dA}{dt} = \text{const} \) (<a href="https://ru.wikipedia.org/wiki/Секторная_скорость" target="_blank">закон площадей</a>)<br>
+            3. \( T^2 \propto a^3 \) (<a href="https://ru.wikipedia.org/wiki/Гармонический_закон" target="_blank">гармонический закон</a>)
         </div>
-        <p>Основы небесной механики, описывающие движение планет вокруг Солнца.</p>
+        <p>Основы <a href="https://ru.wikipedia.org/wiki/Небесная_механика" target="_blank">небесной механики</a>, описывающие движение планет вокруг <a href="https://ru.wikipedia.org/wiki/Солнце" target="_blank">Солнца</a>.</p>
     </section>
 
     <section id="gravity">
         <h2>Закон Всемирного Тяготения</h2>
         <div class="formula">
             \( F = G\frac{m_1m_2}{r^2} \)<br>
-            \( G = 6.67430(15) \times 10^{-11} \text{ м}^3\text{кг}^{-1}\text{с}^{-2} \)
+            \( G = 6.67430(15) \times 10^{-11} \text{ м}^3\text{кг}^{-1}\text{с}^{-2} \) (<a href="https://ru.wikipedia.org/wiki/Гравитационная_постоянная" target="_blank">гравитационная постоянная</a>)
         </div>
-        <p>Фундаментальный закон классической механики, описывающий гравитационное взаимодействие.</p>
+        <p>Фундаментальный закон <a href="https://ru.wikipedia.org/wiki/Классическая_механика" target="_blank">классической механики</a>, описывающий <a href="https://ru.wikipedia.org/wiki/Гравитационное_взаимодействие" target="_blank">гравитационное взаимодействие</a>.</p>
     </section>
 
     <section id="stefan-boltzmann">
         <h2>Закон Стефана-Больцмана</h2>
         <div class="formula">
             \( L = 4\pi R^2 \sigma T^4 \)<br>
-            \( \sigma = 5.670374419 \times 10^{-8} \text{ Вт·м}^{-2}\text{К}^{-4} \)
+            \( \sigma = 5.670374419 \times 10^{-8} \text{ Вт·м}^{-2}\text{К}^{-4} \) (<a href="https://ru.wikipedia.org/wiki/Постоянная_Стефана_—_Больцмана" target="_blank">постоянная Стефана-Больцмана</a>)
         </div>
-        <p>Закон связывает светимость звезды с её температурой и радиусом.</p>
+        <p>Закон связывает <a href="https://ru.wikipedia.org/wiki/Светимость" target="_blank">светимость</a> звезды с её <a href="https://ru.wikipedia.org/wiki/Эффективная_температура" target="_blank">температурой</a> и <a href="https://ru.wikipedia.org/wiki/Радиус_звезды" target="_blank">радиусом</a>.</p>
     </section>
 
-    <!-- Новая секция энциклопедии -->
     <section class="encyclopedia">
-        <h2>Космическая Энциклопедия</h2>
+        <h2>Космический Справочник</h2>
         <select id="objectSelector">
-            <option value="">Выберите объект</option>
+            <option value="">Выберите космический объект</option>
             <optgroup label="Солнце">
                 <option value="sun">Солнце</option>
             </optgroup>
@@ -198,7 +208,7 @@
     </section>
 
     <script>
-        // Звездное небо (остается без изменений)
+        // Звездное небо
         const canvas = document.getElementById('starCanvas');
         const ctx = canvas.getContext('2d');
         let stars = [];
@@ -235,85 +245,85 @@
             requestAnimationFrame(animateStars);
         }
 
-        // Данные для энциклопедии
+        // Данные для справочника
         const spaceObjects = {
             sun: {
                 distance: "0 км (центр системы)",
                 diameter: "1 392 700 км",
                 mass: "1.989 × 10³⁰ кг",
-                description: "Жёлтый карлик, содержит 99.86% массы Солнечной системы. Температура ядра: 15 млн °C"
+                description: "<a href='https://ru.wikipedia.org/wiki/Солнце' target='_blank'>Жёлтый карлик</a>, содержит 99.86% массы <a href='https://ru.wikipedia.org/wiki/Солнечная_система' target='_blank'>Солнечной системы</a>. Температура ядра: 15 млн °C"
             },
             mercury: {
                 distance: "57.9 млн км",
                 diameter: "4 880 км",
                 mass: "3.3 × 10²³ кг",
-                description: "Самая близкая к Солнцу планета. Нет спутников. Суточные перепады температур до 600°C"
+                description: "Самая близкая к Солнцу планета. Нет спутников. Суточные перепады температур до 600°C. <a href='https://ru.wikipedia.org/wiki/Меркурий' target='_blank'>Подробнее</a>"
             },
             venus: {
                 distance: "108 млн км",
                 diameter: "12 104 км",
                 mass: "4.87 × 10²⁴ кг",
-                description: "Атмосфера из CO₂ с кислотными облаками. Температура поверхности: 462°C"
+                description: "Атмосфера из <a href='https://ru.wikipedia.org/wiki/Диоксид_углерода' target='_blank'>CO₂</a> с кислотными облаками. Температура поверхности: 462°C. <a href='https://ru.wikipedia.org/wiki/Венера' target='_blank'>Подробнее</a>"
             },
             earth: {
                 distance: "149.6 млн км",
                 diameter: "12 742 км",
                 mass: "5.97 × 10²⁴ кг",
-                description: "Единственная известная планета с жизнью. 71% поверхности покрыт водой"
+                description: "Единственная известная планета с жизнью. 71% поверхности покрыт водой. <a href='https://ru.wikipedia.org/wiki/Земля' target='_blank'>Подробнее</a>"
             },
             mars: {
                 distance: "227.9 млн км",
                 diameter: "6 779 км",
                 mass: "6.42 × 10²³ кг",
-                description: "Красная планета с самой высокой горой Солнечной системы (Олимп, 21 км)"
+                description: "Красная планета с самой высокой горой Солнечной системы (<a href='https://ru.wikipedia.org/wiki/Олимп_(гора)' target='_blank'>Олимп</a>, 21 км). <a href='https://ru.wikipedia.org/wiki/Марс' target='_blank'>Подробнее</a>"
             },
             jupiter: {
                 distance: "778 млн км",
                 diameter: "139 820 км",
                 mass: "1.9 × 10²⁷ кг",
-                description: "Газовый гигант с Большим красным пятном - гигантским штормом размером с Землю"
+                description: "<a href='https://ru.wikipedia.org/wiki/Газовый_гигант' target='_blank'>Газовый гигант</a> с <a href='https://ru.wikipedia.org/wiki/Большое_красное_пятно' target='_blank'>Большим красным пятном</a> - гигантским штормом размером с Землю"
             },
             saturn: {
                 distance: "1.43 млрд км",
                 diameter: "116 460 км",
                 mass: "5.68 × 10²⁶ кг",
-                description: "Известен своими кольцами из льда и камней. Имеет 83 подтверждённых спутника"
+                description: "Известен своими <a href='https://ru.wikipedia.org/wiki/Кольца_Сатурна' target='_blank'>кольцами</a> из льда и камней. Имеет 83 подтверждённых спутника"
             },
             uranus: {
                 distance: "2.87 млрд км",
                 diameter: "50 724 км",
                 mass: "8.68 × 10²⁵ кг",
-                description: "Ледяной гигант с осью вращения, наклонённой на 98°. Имеет 13 колец"
+                description: "<a href='https://ru.wikipedia.org/wiki/Ледяной_гигант' target='_blank'>Ледяной гигант</a> с осью вращения, наклонённой на 98°. Имеет 13 колец"
             },
             neptune: {
                 distance: "4.5 млрд км",
                 diameter: "49 244 км",
                 mass: "1.02 × 10²⁶ кг",
-                description: "Самый ветреный мир с скоростью ветров до 2100 км/ч. Имеет 14 спутников"
+                description: "Самый ветреный мир с скоростью ветров до 2100 км/ч. Имеет 14 спутников. <a href='https://ru.wikipedia.org/wiki/Нептун' target='_blank'>Подробнее</a>"
             },
             moon: {
                 distance: "384 400 км от Земли",
                 diameter: "3 474 км",
                 mass: "7.35 × 10²² кг",
-                description: "Единственный естественный спутник Земли. Возраст: ~4.5 млрд лет"
+                description: "Единственный <a href='https://ru.wikipedia.org/wiki/Естественный_спутник' target='_blank'>естественный спутник</a> Земли. Возраст: ~4.5 млрд лет. <a href='https://ru.wikipedia.org/wiki/Луна' target='_blank'>Подробнее</a>"
             },
             europa: {
                 distance: "671 100 км от Юпитера",
                 diameter: "3 122 км",
                 mass: "4.8 × 10²² кг",
-                description: "Под ледяной коркой可能存在 океан жидкой воды. Основной кандидат на поиск жизни"
+                description: "Под ледяной коркой возможен <a href='https://ru.wikipedia.org/wiki/Подповерхностный_океан' target='_blank'>океан жидкой воды</a>. Основной кандидат на поиск жизни. <a href='https://ru.wikipedia.org/wiki/Европа_(спутник)' target='_blank'>Подробнее</a>"
             },
             ganymede: {
                 distance: "1.07 млн км от Юпитера",
                 diameter: "5 268 км",
                 mass: "1.48 × 10²³ кг",
-                description: "Крупнейший спутник в системе. Имеет собственное магнитное поле"
+                description: "Крупнейший спутник в системе. Имеет собственное <a href='https://ru.wikipedia.org/wiki/Магнитное_поле' target='_blank'>магнитное поле</a>. <a href='https://ru.wikipedia.org/wiki/Ганимед_(спутник)' target='_blank'>Подробнее</a>"
             },
             titan: {
                 distance: "1.2 млн км от Сатурна",
                 diameter: "5 151 км",
                 mass: "1.35 × 10²³ кг",
-                description: "Единственный спутник с плотной атмосферой. Имеет жидкие метановые озёра"
+                description: "Единственный спутник с плотной <a href='https://ru.wikipedia.org/wiki/Атмосфера' target='_blank'>атмосферой</a>. Имеет жидкие <a href='https://ru.wikipedia.org/wiki/Метановые_озёра_Титана' target='_blank'>метановые озёра</a>. <a href='https://ru.wikipedia.org/wiki/Титан_(спутник)' target='_blank'>Подробнее</a>"
             }
         };
 
@@ -326,17 +336,17 @@
                 document.getElementById('distanceValue').textContent = spaceObjects[selected].distance;
                 document.getElementById('diameter').textContent = spaceObjects[selected].diameter;
                 document.getElementById('mass').textContent = spaceObjects[selected].mass;
-                document.getElementById('objectDescription').textContent = spaceObjects[selected].description;
+                document.getElementById('objectDescription').innerHTML = spaceObjects[selected].description;
                 container.style.display = 'block';
             } else {
                 document.getElementById('distanceValue').textContent = '—';
                 document.getElementById('diameter').textContent = '—';
                 document.getElementById('mass').textContent = '—';
-                document.getElementById('objectDescription').textContent = 'Выберите объект для отображения информации';
+                document.getElementById('objectDescription').innerHTML = 'Выберите объект для отображения информации';
             }
         });
 
-        // Активация секций
+        // Активация секций при скролле
         window.addEventListener('scroll', () => {
             document.querySelectorAll('section').forEach(section => {
                 const rect = section.getBoundingClientRect();
